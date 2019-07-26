@@ -4,10 +4,16 @@ import {Observable, throwError} from 'rxjs';
 import {tap, catchError} from 'rxjs/operators';
 import {IQuestion} from './models/IQuestion';
 import {environment} from 'src/environments/environment';
-import {IQuestionAnswer} from './models/IQuestionAnswer';
 import {ITestResult} from './models/ITestResult';
 import {ITestAnswer} from './models/ITestAnswer';
 
+// This will be local on prod (on heroku)
+
+if (environment.production) {
+  this.environmentName = 'Production';
+} else {
+  this.environmentName = 'Local';
+}
 @Injectable({
   providedIn: 'root'
 })
