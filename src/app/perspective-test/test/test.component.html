@@ -1,1 +1,31 @@
-<p>test works!</p>
+<div class="test">
+  <h5 class="title">
+    Discover Your Perspective
+  </h5>
+  <p class="sub-title mb-5">Complete the 7 min test and get a detailed report of your lenses on the wold.</p>
+  <form novalidate #testForm="ngForm" class="question">
+    <div class="list-group">
+      <div class="fom-group list-group-item " *ngFor="let question of questions">
+        <p class="question-text mb-3">{{question.text}}</p>
+        <span class="mr-3 text-danger align-text-bottom ">Disagree</span>
+        <div class="custom-control custom-radio custom-control-inline"
+          *ngFor="let choiceItem of choicesArray; let i = index">
+          <input class="custom-control-input" type="radio" [id]="question.id + choiceItem" [name]="question.id"
+            [value]="choiceItem" [(ngModel)]="question.answer">
+          <label class="custom-control-label" [for]="question.id + choiceItem"></label>
+        </div>
+        <span class="text-success align-text-bottom">Agree</span>
+        <span class="form-text custom-invalid-feedback">
+        </span>
+      </div>
+
+      <div class="form-group list-group-item">
+          <p class="question-text mb-3">Your Email</p>
+          <input type="text" class="form-control form-control-lg w-75 mx-auto"  placeholder="you@example.com">
+      </div>
+    </div>
+
+    <button class=" btn btn-primary my-5">Save & Continue</button>
+  </form>
+
+</div>
