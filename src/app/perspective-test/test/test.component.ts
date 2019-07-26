@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {TestService} from '../test.service';
-import {IQuestion} from '../IQuestion';
-import {ITestResult} from '../ITestResult';
-import {IQuestionAnswer} from '../IQuestionAnswer';
+import {IQuestion} from '../models/IQuestion';
+import {ITestResult} from '../models/ITestResult';
+import {IQuestionAnswer} from '../models/IQuestionAnswer';
 import {Router} from '@angular/router';
 @Component({
   selector: 'app-test',
@@ -30,7 +30,7 @@ export class TestComponent implements OnInit {
 
   submit(testForm) {
     this.submitted = true;
-    
+
     if (!testForm.valid) {
       return;
     }

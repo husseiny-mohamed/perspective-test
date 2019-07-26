@@ -2,11 +2,11 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {tap, catchError} from 'rxjs/operators';
-import {IQuestion} from './IQuestion';
+import {IQuestion} from './models/IQuestion';
 import {environment} from 'src/environments/environment';
-import {IQuestionAnswer} from './IQuestionAnswer';
-import {ITestResult} from './ITestResult';
-import {ITestAnswer} from './ITestAnswer';
+import {IQuestionAnswer} from './models/IQuestionAnswer';
+import {ITestResult} from './models/ITestResult';
+import {ITestAnswer} from './models/ITestAnswer';
 
 @Injectable({
   providedIn: 'root'

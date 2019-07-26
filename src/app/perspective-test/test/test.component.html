@@ -29,10 +29,10 @@
                 [ngClass]="{'is-invalid': (emailVar.touched || emailVar.dirty || submitted) && !emailVar.valid }">
               <span class="invalid-feedback mail-error">
                 <span *ngIf="emailVar.errors?.required">
-                  email is required.
+                  Email is required.
                 </span>
                 <span *ngIf="emailVar.errors?.email">
-                  email is not in a valid format.
+                  Email is not in a valid format.
                 </span>
               </span>
             </div>
