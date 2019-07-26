@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: 'https://perspective-test-api.herokuapp.com/api/v1'
 };
