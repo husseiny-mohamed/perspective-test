@@ -1,1 +1,68 @@
-<p>result works!</p>
+<div class="result list-group">
+  <div class="list-group-item">
+    <div class="row">
+      <div class="col-5">
+        <h2 class="perspective-title">Your Perspective</h2>
+        <h6>Your Perspective Type is {{result}}</h6>
+      </div>
+      <div class="col-7">
+        <div class="row">
+          <div class="col-3 text-muted">
+            <span>Extraversion (E)</span>
+          </div>
+          <div class="col-6">
+            <div class="form-group progress" [ngClass]="{'flex-row-reverse': result[0]==='I'}">
+              <div class="progress-bar" role="progressbar" style="width: 50%"></div>
+            </div>
+          </div>
+          <div class="col-3 text-muted">
+            <span>Introversion (I)</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3 text-muted">
+            <span>Sensing (S)</span>
+          </div>
+          <div class="col-6">
+            <div class="form-group progress" [ngClass]="{'flex-row-reverse': result[1]==='N'}">
+              <div class="progress-bar" role="progressbar" style="width: 50%"></div>
+            </div>
+          </div>
+          <div class="col-3 text-muted">
+            <span>Intuition (N)</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3 text-muted">
+            <span>Thinking (T)</span>
+          </div>
+          <div class="col-6">
+            <div class="form-group progress" [ngClass]="{'flex-row-reverse': result[2]==='F'}">
+              <div class="progress-bar" role="progressbar" style="width: 50%"></div>
+            </div>
+          </div>
+          <div class="col-3 text-muted">
+            <span>Feeling (F)</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3 text-muted">
+            <span>Judging (J)</span>
+          </div>
+          <div class="col-6">
+            <div class="form-group progress" [ngClass]="{'flex-row-reverse': result[3]==='P'}">
+              <div class="progress-bar" role="progressbar" style="width: 50%"></div>
+            </div>
+          </div>
+          <div class="col-3 text-muted">
+            <span>Perceiving (P)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

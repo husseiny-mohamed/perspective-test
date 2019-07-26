@@ -9,7 +9,7 @@
 }
 .question-text {
   color: #545b61;
-  font-weight: bold
+  font-weight: bold;
 }
 
 .question {
@@ -32,8 +32,17 @@
   width: 1.5rem;
   height: 1.5rem;
 }
-.test .list-group-item{
+.test .list-group-item {
   padding: 2rem 0;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 
+.question-error {
+  border: #dc3545 solid 1px;
+  /* background-color: #ffcccb; */
+  z-index: 999;
+}
+.mail-error {
+  text-align: left;
+  margin-left: 140px;
+}

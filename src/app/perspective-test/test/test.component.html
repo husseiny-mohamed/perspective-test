@@ -3,29 +3,46 @@
     Discover Your Perspective
   </h5>
   <p class="sub-title mb-5">Complete the 7 min test and get a detailed report of your lenses on the wold.</p>
-  <form novalidate #testForm="ngForm" class="question" (ngSubmit)="submit()">
-    <div class="list-group">
-      <div class="fom-group list-group-item " *ngFor="let question of questions">
-        <p class="question-text mb-3">{{question.text}}</p>
-        <span class="mr-3 text-danger align-text-bottom ">Disagree</span>
-        <div class="custom-control custom-radio custom-control-inline"
-          *ngFor="let choiceItem of choicesArray; let i = index">
-          <input class="custom-control-input" type="radio" [id]="question._id + choiceItem" [name]="question._id"
-            [value]="choiceItem" [(ngModel)]="question.answer">
-          <label class="custom-control-label" [for]="question._id + choiceItem"></label>
-        </div>
-        <span class="text-success align-text-bottom">Agree</span>
-        <span class="form-text custom-invalid-feedback">
-        </span>
-      </div>
+  <form novalidate #testForm="ngForm" class="question" (ngSubmit)="submit(testForm)">
+    <fieldset [disabled]="loading">
+        <div class="list-group">
+            <div class="fom-group list-group-item"
+              [ngClass]="{'question-error': submitted && (!question.answer || question.answer===0) }"
+              *ngFor="let question of questions">
+              <p class="question-text mb-3">{{question.text}}</p>
+              <span class="mr-3 text-danger align-text-bottom ">Disagree</span>
+              <div class="custom-control custom-radio custom-control-inline"
+                *ngFor="let choiceItem of choicesArray; let i = index">
+                <input class="custom-control-input" type="radio" [id]="question._id + choiceItem" [name]="question._id"
+                  [value]="choiceItem" [(ngModel)]="question.answer" required>
+                <label class="custom-control-label" [for]="question._id + choiceItem"></label>
+              </div>
+              <span class="text-success align-text-bottom">Agree</span>
+              <span class="form-text custom-invalid-feedback">
+              </span>
+            </div>
 
-      <div class="form-group list-group-item">
-          <p class="question-text mb-3">Your Email</p>
-          <input type="text" [(ngModel)]="email" name="email" class="form-control form-control-lg w-75 mx-auto"  placeholder="you@example.com">
-      </div>
-    </div>
+            <div class="form-group list-group-item">
+              <p class="question-text mb-3">Your Email</p>
+              <input type="text" [(ngModel)]="email" name="email" #emailVar="ngModel"
+                class="form-control form-control-lg w-75 mx-auto" placeholder="you@example.com" required email
+                [ngClass]="{'is-invalid': (emailVar.touched || emailVar.dirty || submitted) && !emailVar.valid }">
+              <span class="invalid-feedback mail-error">
+                <span *ngIf="emailVar.errors?.required">
+                  email is required.
+                </span>
+                <span *ngIf="emailVar.errors?.email">
+                  email is not in a valid format.
+                </span>
+              </span>
+            </div>
+          </div>
 
-    <button class=" btn btn-primary my-5" type="submit">Save & Continue</button>
+          <button class=" btn btn-primary my-5" type="submit">
+            <span class="spinner-border spinner-border-sm" role="status" *ngIf="loading"></span>
+            Save & Continue
+          </button>
+    </fieldset>
   </form>
 
 </div>

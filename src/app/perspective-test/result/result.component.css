@@ -1,0 +1,21 @@
+.perspective-title {
+  color: #123261;
+}
+.result .progress-bar {
+  background-color: #a920cb;
+}
+
+.result .list-group-item {
+  padding: 3.75rem 1.25rem;
+}
+.result span {
+  font-size: 1rem;
+  font-weight: 500;
+  text-indent: 45px;
+  line-height: 8px;
+}
+
+.result .col-3 {
+ 
+  line-height: 8px;
+}
