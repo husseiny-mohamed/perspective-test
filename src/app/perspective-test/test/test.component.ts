@@ -1,4 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {TestService} from '../test.service';
+import {IQuestion} from '../IQuestion';
+import {ITestResult} from '../ITestResult';
+import {IQuestionAnswer} from '../IQuestionAnswer';
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -6,38 +10,31 @@ import {Component, OnInit} from '@angular/core';
 })
 export class TestComponent implements OnInit {
   choicesArray: Array<number> = [1, 2, 3, 4, 5, 6, 7];
+  errorMessage = '';
+  questions: IQuestion[] = [];
+  result: ITestResult;
+  email: '';
+  constructor(private testService: TestService) {}
 
-  questions = [
-    {
-      id: '1',
-      text: 'You find it takes effort to introduce yourself to other people.',
-      answer: 0
-    },
-    {
-      id: '2',
-      text: 'You consider yourself more practical than creative.',
-      answer: 0
-    },
-    {
-      id: '3',
-      text: 'Winning a debate matters less to you than making sure no one gets upset.',
-      answer: 0
-    },
-    {
-      id: '4',
-      text: 'You get energized going to social events that involve many interactions.',
-      answer: 0
-    },
-    {
-      id: '5',
-      text: 'You often spend time exploring unrealistic and impractical yet intriguing ideas.',
-      answer: 0
-    }
-  ];
+  ngOnInit() {
+    this.testService.getQuestions().subscribe(
+      (questions) => {
+        this.questions = questions;
+      },
+      (error) => (this.errorMessage = error as any)
+    );
+  }
 
-  constructor() {}
+  submit() {
+    const answers = this.questions.map((question) => {
+      return {questionId: question._id, answer: question.answer} as IQuestionAnswer;
+    });
 
-  ngOnInit() {}
-
-  save() {}
+    this.testService.postQuestionsAnswers({email: this.email, answers}).subscribe(
+      (result) => {
+        this.result = result;
+      },
+      (error) => (this.errorMessage = error as any)
+    );
+  }
 }
