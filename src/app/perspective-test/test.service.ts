@@ -7,13 +7,6 @@ import {environment} from 'src/environments/environment';
 import {ITestResult} from './models/ITestResult';
 import {ITestAnswer} from './models/ITestAnswer';
 
-// This will be local on prod (on heroku)
-
-if (environment.production) {
-  this.environmentName = 'Production';
-} else {
-  this.environmentName = 'Local';
-}
 @Injectable({
   providedIn: 'root'
 })
